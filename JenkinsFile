@@ -65,7 +65,7 @@ pipeline {
                     Build Number: ${env.BUILD_NUMBER}
                     Build URL: ${env.BUILD_URL}
                 """,
-                to: 'youremail@example.com'
+                to: 'nouhailangr275128@gmail.com'
             )
         }
 
@@ -80,7 +80,7 @@ pipeline {
                     Build Number: ${env.BUILD_NUMBER}
                     Build URL: ${env.BUILD_URL}
                 """,
-                to: 'youremail@example.com'
+                to: 'nouhailangr275128@gmail.com'
             )
         }
     }
