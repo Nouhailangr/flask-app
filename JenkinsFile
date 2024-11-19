@@ -36,8 +36,14 @@ pipeline {
         stage('Clean Up') {
             steps {
                 script {
-                    // Optionally stop and remove containers after the app finishes
-                    sh 'docker ps -q --filter "name=$DOCKER_IMAGE" | xargs docker stop | xargs docker rm'
+                    def containerId = sh(script: "docker ps -q --filter name=flask-app", returnStdout: true).trim()
+                    if (containerId) {
+                        sh "docker stop ${containerId}"
+                        sh "docker rm ${containerId}"
+                    } else {
+                        echo "No running containers to clean up."
+                    }
+                    sh 'docker rmi -f flask-app:latest || true'
                 }
             }
         }
